@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Button Clicker</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div id="div">
+            <input id="cam" type="text" readonly value="$" />
+            <div id="upgrades">
+                <button id="upg1" onclick="up1()">+1 Multi for $20</button>
+                <button id="upg2" class="upb" onclick="up2()">+3 Multi for $80</button>
+                <button id="upg3" class="upb" onclick="up3()">+10 Multi for $200</button>
+                <button id="upg4" class="upb" onclick="up4()">+20 Multi for $400</button>
+                <button id="upg5" class="upb" onclick="up5()">+60 Multi for $1000</button>
+            </div>
+            <div id="stats">
+                <input type="text" class="statstring" id="muls" value="Multi: 1" />
+            </div>
+            <button onclick="reset()" id="hrb">Hard Reset</button>
+        </div>
+        <!-- <script src="lib/jquery-3.6.0.js"></script> -->
+        <script src="js/app.js"></script>
+    </body>
+</html>
