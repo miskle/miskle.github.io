@@ -52,10 +52,12 @@ function up5() {
     }
 }
 window.onload = function() {
-    cash = localStorage.getItem("cash");
-    multi = localStorage.getItem("multi");
-    cash = parseInt(cash);
-    multi = parseInt(multi);
+    if (cash >= 2) {
+        cash = localStorage.getItem("cash");
+        multi = localStorage.getItem("multi");
+        cash = parseInt(cash);
+        multi = parseInt(multi);
+    }
 }
 function reset() {
     if (window.confirm("Do you really want to hard reset?")) {
