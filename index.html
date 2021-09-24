@@ -5,5 +5,28 @@
   <body>
     <a href="mega-clicker/" class="link">Mega Clicker</a>
     <a href="button-clicker/" class="link">Button Clicker</a>
+    </br>
+  <p>text rythm game press left arrow to press left etc</p>
+    <input type="text" id="left" readonly="" value="left"/>
+<script>
+var left = document.getElementById("left");
+document.addEventListener("keydown", function(e){
+  let key = e.key
+  switch(key){
+    case "ArrowLeft":
+      left.value = "LEFT";
+      break;
+  }
+});
+  
+document.addEventListener("keyup", function(e){
+  let key = e.key
+  switch(key){
+    case "ArrowLeft":
+      left.value = "left";
+      break;
+  }
+});
+</script>
   </body>
 </html>
