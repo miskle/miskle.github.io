@@ -8,13 +8,28 @@
     </br>
   <p>text rythm game press left arrow to press left etc</p>
     <input type="text" id="left" readonly="" value="left"/>
+    <input type="text" id="down" readonly="" value="down"/>
+    <input type="text" id="up" readonly="" value="up"/>
+    <input type="text" id="right" readonly="" value="right"/>
 <script>
 var left = document.getElementById("left");
+var down = document.getElementById("down");
+var up = document.getElementById("up");
+var right = document.getElementById("right");
 document.addEventListener("keydown", function(e){
   let key = e.key
   switch(key){
     case "ArrowLeft":
       left.value = "LEFT";
+      break;
+    case "ArrowDown":
+      down.value = "DOWN";
+      break;
+    case "ArrowUp":
+      up.value = "UP";
+      break;
+    case "ArrowRight":
+      right.value = "RIGHT";
       break;
   }
 });
@@ -24,6 +39,15 @@ document.addEventListener("keyup", function(e){
   switch(key){
     case "ArrowLeft":
       left.value = "left";
+      break;
+    case "ArrowDown":
+      down.value = "down";
+      break;
+    case "ArrowUp":
+      up.value = "up";
+      break;
+    case "ArrowRight":
+      right.value = "right";
       break;
   }
 });
