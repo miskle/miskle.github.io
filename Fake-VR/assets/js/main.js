@@ -21,7 +21,7 @@ var addCube = function() {
 var ground = new addCube();
 
 ground.main.width = 3;
-ground.depth = 3;
+ground.main.depth = 3;
 
 camera.position.z = 5;
 
