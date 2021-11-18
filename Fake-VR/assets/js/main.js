@@ -10,18 +10,15 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var addCube = function() {
-    const geometry = new THREE.BoxGeometry();
+var addCube = function(width,height,depth) {
+    const geometry = new THREE.BoxGeometry(width,height,depth);
     const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
     const cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
     this.main = cube;
 }
 
-var ground = new addCube();
-
-ground.main.width = 3;
-ground.main.depth = 3;
+var ground = new addCube(3,1,3);
 
 camera.position.z = 5;
 
