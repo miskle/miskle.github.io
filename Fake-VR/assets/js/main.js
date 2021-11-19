@@ -4,6 +4,10 @@ const windowsettings = {
     width: window.innerWidth,
     height: window.innerHeight
 };
+
+const defaults = {
+    cheight: 2.5
+}
 const camera = new THREE.PerspectiveCamera( 70, 2, 1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
@@ -18,12 +22,27 @@ var addCube = function(width,height,depth) {
     this.main = cube;
 }
 
-var ground = new addCube(3,1,3);
+const light = new THREE.PointLight( 0xffffff, 1, 100 );
+light.position.set( 0, 2.5, 0 );
+scene.add( light );
+
+var ground = new addCube(2048,1,2048);
+
+function generate() {
+    var terrain = new addCube(Math.floor(Math.random() * 60 + 5),1,Math.floor(Math.random() * 60 + 5));
+    terrain.main.position.y = 1;
+    terrain.main.position.x = Math.floor(Math.random() * 1024);
+    console.log("generated terrain piece!");
+}
+
+generate();
 
 camera.position.z = 5;
 
 var wheld = false;
+var aheld = false;
 var sheld = false;
+var dheld = false;
 var raheld = false;
 var laheld = false;
 var croty = 0;
@@ -34,8 +53,14 @@ document.addEventListener("keydown", function(ipt) {
         case "KeyW":
             wheld = true;
             break;
+        case "KeyA":
+            aheld = true;
+            break;
         case "KeyS":
             sheld = true;
+            break;
+        case "KeyD":
+            dheld = true;
             break;
         case "KeyO":
             croty = 0;
@@ -55,8 +80,14 @@ document.addEventListener("keyup", function(ipt) {
         case "KeyW":
             wheld = false;
             break;
+        case "KeyA":
+            aheld = false;
+            break;
         case "KeyS":
             sheld = false;
+            break;
+        case "KeyD":
+            dheld = false;
             break;
         case "ArrowRight":
             raheld = false;
@@ -66,7 +97,7 @@ document.addEventListener("keyup", function(ipt) {
             break;
     }
 });
-camera.position.y = 2
+camera.position.y = defaults.cheight;
 
 var mousex;
 var mousey;
@@ -91,10 +122,20 @@ function animate() {
 	renderer.render( scene, camera );
     // key input if statements
     if (wheld) {
-        camera.position.z -= 0.1;
+        camera.translateZ(-0.1);
+        camera.position.y = defaults.cheight;
+    }
+    if (aheld) {
+        camera.translateX(-0.1);
+        camera.position.y = defaults.cheight;
     }
     if (sheld) {
-        camera.position.z += 0.1;
+        camera.translateZ(0.1);
+        camera.position.y = defaults.cheight;
+    }
+    if (dheld) {
+        camera.translateX(0.1);
+        camera.position.y = defaults.cheight;
     }
     if (raheld) {
         croty -= 0.02;
@@ -104,5 +145,6 @@ function animate() {
     }
     camera.rotation.x = mousey + 8192;
     camera.rotation.y = (mousex) + 64 + croty;
+    light.position.set( camera.position.x, camera.position.y, camera.position.z );
 }
 animate();
